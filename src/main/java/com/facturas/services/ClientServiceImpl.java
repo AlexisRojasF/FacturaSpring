@@ -20,4 +20,10 @@ public class ClientServiceImpl implements ClientService{
     public List<Client> findAll() {
         return (List) repository.findAll();
     }
+
+    @Override
+    @Transactional
+    public void save(Client client) {
+         repository.save(client);
+    }
 }
