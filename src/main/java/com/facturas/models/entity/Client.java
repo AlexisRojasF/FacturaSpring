@@ -2,8 +2,10 @@ package com.facturas.models.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -26,10 +28,12 @@ public class Client {
     private String lastName;
 
     @NotEmpty
+    @Email
     private String email;
 
-    @NotNull
+
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
     @PrePersist

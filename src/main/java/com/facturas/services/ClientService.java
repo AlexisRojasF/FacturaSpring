@@ -3,10 +3,15 @@ package com.facturas.services;
 import com.facturas.models.entity.Client;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClientService {
 
-    public List<Client> findAll();
+     List<Client> findAll();
 
-    public void save(Client client);
+     void save(Client client);
+
+     Optional<Client> findOne(Long id);
+
+     void delete(Long id);
 }
