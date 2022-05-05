@@ -3,6 +3,8 @@ package com.facturas.services;
 import com.facturas.models.entity.Client;
 import com.facturas.models.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,11 @@ public class ClientServiceImpl implements ClientService{
     @Transactional(readOnly = true)
     public List<Client> findAll() {
         return (List) repository.findAll();
+    }
+
+    @Override
+    public Page<Client> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override

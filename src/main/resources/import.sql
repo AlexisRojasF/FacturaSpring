@@ -1,2 +1,15 @@
-INSERT INTO clients (id, name, last_name, email, create_at) VALUES(1, 'alexis', 'rojas', 'alexis@alexis.com', '2022-04-28');
-INSERT INTO clients (id, name, last_name, email, create_at) VALUES(2, 'guille', 'ff', 'ff@ff.com', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(1, 'alexis', 'rojas', 'alexis@alexis.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(2, 'guille', 'ff', 'ff1@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(3, 'guille', 'ff', 'f2f@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(4, 'guille', 'ff', 'ff22@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(5, 'guille', 'ff', 'ff2@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(6, 'guille', 'ff', 'ff4@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(7, 'guille', 'ff', 'ff5@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(8, 'guille', 'ff', 'f6f@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(9, 'guille', 'ff', 'ff@8ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(10, 'guille', 'ff', 'f8f@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(11, 'guille', 'ff', 'f8f@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(12, 'guille', 'ff', 'f1f@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(13, 'guille', 'ff', 'f3f@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(14, 'guille', 'ff', 'ff54@ff.com','', '2022-04-28');
+INSERT INTO clients (id, name, last_name, email,foto, create_at) VALUES(15, 'guille', 'ff', 'f3f@ff.com','', '2022-04-28');

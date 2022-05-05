@@ -12,7 +12,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Spring-Facturas</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -26,41 +27,50 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container py-4">
 
-    <h1 class="" th:text="${titulo}"></h1>
+    <div class="card bg-light">
+        <h1 class="" th:text="${titulo}"></h1>
 
-    <form th:action="@{/form}" th:object="${client}" method="post">
-        <table class="table table-bordered">
-        <tr>
-            <td style="width: 200px;">Nombre: </td>
-            <td><input type="text" th:field="*{name}" class="form-control"th:errrorclass="'form-control alert-danger'">
-                <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></small>
-            </td>
-        </tr>
-        <tr>
-            <td>Apellido: </td>
-            <td>
-                <input type="text" th:field="*{lastName}" class="form-control"th:errrorclass="'form-control alert-danger'">
-                <small class="form-text text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" ></small>
-            </td>
-        </tr>
-        <tr>
-            <td>Email: </td>
-            <td>
-                <input type="email" th:field="*{email}" class="form-control"th:errrorclass="'form-control alert-danger'">
-                <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></small>
-            </td>
-        </tr>
+        <form th:action="@{/form}" th:object="${client}" method="post" enctype="multipart/form-data">
+            <table class="table table-bordered">
+                <tr>
+                    <td style="width: 200px;">Nombre:</td>
+                    <td><input type="text" th:field="*{name}" class="form-control"
+                               th:errrorclass="'form-control alert-danger'">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}"
+                               th:errors="*{name}"></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Apellido:</td>
+                    <td>
+                        <input type="text" th:field="*{lastName}" class="form-control"
+                               th:errrorclass="'form-control alert-danger'">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('lastName')}"
+                               th:errors="*{lastName}"></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>
+                        <input type="email" th:field="*{email}" class="form-control"
+                               th:errrorclass="'form-control alert-danger'">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+                               th:errors="*{email}"></small>
+                    </td>
+                </tr>
 
 
-            <tr> <td><input type="submit" value="crear cliente" class="btn btn-primary">
+                <tr>
+                    <td><input type="submit" value="crear cliente" class="btn btn-primary">
 
-            </td></tr>
-        </table>
-        <input type="hidden"th:field="*{id}">
-    </form>
-
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" th:field="*{id}">
+        </form>
+    </div>
 </div>
 
 </body>

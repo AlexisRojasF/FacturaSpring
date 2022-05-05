@@ -31,6 +31,8 @@ public class Client {
     @Email
     private String email;
 
+    private String foto;
+
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
