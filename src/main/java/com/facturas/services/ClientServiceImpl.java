@@ -32,7 +32,7 @@ public class ClientServiceImpl implements ClientService{
     @Override
     @Transactional
     public void save(Client client) {
-            repository.save(client);
+       repository.save(client);
 
     }
 

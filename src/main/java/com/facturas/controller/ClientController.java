@@ -12,10 +12,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @SessionAttributes("client")
@@ -23,6 +29,20 @@ public class ClientController {
 
     @Autowired
     private ClientServiceImpl service;
+
+
+    @GetMapping("/ver/{id}")
+    public String ver(@PathVariable("id") Long id,Map<String,Object> model,RedirectAttributes flash){
+        Optional<Client> cliente = service.findOne(id);
+        if (!cliente.isPresent()){
+            flash.addFlashAttribute("error","el cliente no existe en la base de datos");
+            return "redirect:/listar";
+        }
+        model.put("client",cliente.get());
+        model.put("titulo","Detalle del cliente: " +cliente.get().getName());
+
+        return "ver";
+    }
 
     @RequestMapping(value = "/listar",method = RequestMethod.GET)
     public String listar(@RequestParam(name = "page",defaultValue = "0") int page, Model model ){
@@ -76,11 +96,26 @@ public class ClientController {
 
     }
 
-    @PostMapping("/form")
-    public String save(@Valid Client client, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status){
+    @RequestMapping(value = "/form" ,method = RequestMethod.POST)
+    public String save(@Valid Client client, BindingResult result, @RequestParam("file") MultipartFile foto, Model model, RedirectAttributes flash, SessionStatus status){
         if(result.hasErrors()){
             model.addAttribute("titulo","Formulario Cliente");
             return "form";
+        }
+
+        if (!foto.isEmpty()){
+            Path diretorioRecursos= Paths.get("src//main//resources//static//img//uploads");
+            String rootPath = diretorioRecursos.toFile().getAbsolutePath();
+            try {
+                byte[] bytes =foto.getBytes();
+                Path retaCompleta = Paths.get(rootPath+"//"+foto.getOriginalFilename());
+                Files.write(retaCompleta,bytes);
+                flash.addFlashAttribute("info","Has subido Correctamente '"+
+                        foto.getOriginalFilename()+"'");
+                client.setFoto(foto.getOriginalFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         String mensaje = (client.getId() != null)? "Cliente Editado":"Cliente Creado";
         service.save(client);
