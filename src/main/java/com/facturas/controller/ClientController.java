@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -88,8 +89,18 @@ public class ClientController {
     public String eliminar(@PathVariable("id") Long id,RedirectAttributes flash){
 
         if (id > 0){
+            Client client = service.findOne(id).get();
            service.delete(id);
            flash.addFlashAttribute("success","Cliente Eliminado");
+
+           Path rootPath = Paths.get("uploads").resolve(client.getFoto()).toAbsolutePath();
+            File archivo = rootPath.toFile();
+
+            if(archivo.exists() && archivo.canRead()){
+                if (archivo.delete()){
+                    flash.addFlashAttribute("info", "img eliminada");
+                }
+            }
         }
         return "redirect:/listar";
 

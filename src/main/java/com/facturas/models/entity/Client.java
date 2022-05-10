@@ -10,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Clients")
@@ -30,6 +31,9 @@ public class Client {
     @NotEmpty
     @Email
     private String email;
+
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Factura> facturas;
 
     private String foto;
 
